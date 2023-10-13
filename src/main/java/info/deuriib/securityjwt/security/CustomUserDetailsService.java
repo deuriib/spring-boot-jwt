@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsService  implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
     private final IUserRepository _userRepository;
 
     @Autowired
@@ -24,7 +24,7 @@ public class CustomUserDetailsService  implements UserDetailsService {
     }
 
 
-    public Collection<GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+    private Collection<GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
